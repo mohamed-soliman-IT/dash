@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css' rel='stylesheet' />
+    <link rel="stylesheet" href="dash.css">
+
+    <style>
+        body{
+          background:#f3f3f3;
+          margin-top:20px;
+          color: #616f80;
+      }
+      .card {
+          border: none;
+          margin-bottom: 24px;
+          -webkit-box-shadow: 0 0 13px 0 rgba(236,236,241,.44);
+          box-shadow: 0 0 13px 0 rgba(236,236,241,.44);
+      }
+      
+      .avatar-xs {
+          height: 2.3rem;
+          width: 2.3rem;
+      }
+
+      .card-div{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .card-div img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .card-body{
+        display: flex;
+      }
+
+      .card-body p{
+
+        padding-top: 12px;
+
+
+      }
+
+      .dash-nav{
+        margin-top: 55px;
+
+      }
+
+
+
+      @media screen and (max-width:768px) {
+
+        .dash-nav{
+          margin-top: 50px;
+        }
+        
+      }
+
+      @media screen and (max-width:600px) {
+
+
+        .dash-nav{
+          justify-content: space-evenly;
+        }
+      }
+
+
+
+
+      </style>
+
+</head>
+
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header_img"> <img src="images/IMG-20230623-WA0014.jpg" alt=""> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div> <a href="dash.html" class="nav_logo"> <i class='bx bx-layer nav_logo-icon' title="Home"></i> <span class="nav_logo-name"><img
+                            class="visionlogo" src="images/Asset 2.svg" alt=""></span> </a>
+
+                <!-- Nav list items -->
+                <div class="nav_list">
+                    
+                    <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon' title="Dashboard"></i>
+                        <span class="nav_name">Dashboard</span> </a>
+                     <a href="reports.html" class="nav_link"> 
+                        <i class="fas fa-chart-pie" title="Reports"></i>
+                        <span class="nav_name">Reports</span> </a> <a href="screencastes.html" class="nav_link">
+                            <i class="fas fa-desktop" title="casts"></i>
+                            <span class="nav_name">Screencasts</span> </a> <a href="projects.html" class="nav_link">
+                                <i class="fas fa-building"></i>
+                                <span class="nav_name" title="Projects">Projects</span> </a> <a
+                                href="app.html" class="nav_link"> 
+                                <i class='fas fa-code' title="Apps"></i> <span class="nav_name">Apps</span> </a>
+                    <a href="profiles.html" class="nav_link"> <i class='fas fa-id-card' title="ID-Cards"></i> <span class="nav_name">Profiles</span>
+                    </a>
+                </div>
+                <a href="employees.html" class="nav_link">
+                    <i class="fas fa-user" title="Employee"></i>
+                    <span class="nav_name">Employees</span>
+                </a>
+            </div>
+            
+            <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon' title="SignOut"></i> <span class="nav_name">SignOut</span> </a>
+        </nav>
+    </div>
+
+
+
+    <!--navbar above card items-->
+    <div class="dash-nav d-flex align-items-center">
+        <h4 class="mainh4">VISION Dashboard</h4>
+        <div class="ms-auto" style="padding-top: 15px;">
+            <span class="material-icons">search</span>
+            <span class="material-icons">notifications</span>
+            <span class="material-icons">mark_unread_chat_alt</span>
+        </div>
+    </div>
+
+
+
+    <div id="calendar"></div>
+
+    <!-- Your existing script tags -->
+
+    <!-- Include jQuery first -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="dash.js"></script>
+    <!-- Then include FullCalendar and its dependencies -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
+    <script>
+        $(document).ready(function() {
+            var calendar = $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'addEventButton',
+                    right: 'month,agendaWeek,agendaDay,listWeek'
+                },
+                defaultDate: '2018-11-16',
+                navLinks: true,
+                editable: true,
+                eventLimit: true,
+                events: [{
+                    title: 'Simple static event',
+                    start: '2018-11-16',
+                    description: 'Super cool event'
+                }, ],
+                customButtons: {
+                    addEventButton: {
+                        text: 'Add new event',
+                        click: function() {
+                            var title = prompt('Vision Says: Enter event title');
+                            if (title) {
+                                var dateStr = prompt('Enter date in YYYY-MM-DD format');
+                                var date = moment(dateStr);
+
+                                if (date.isValid()) {
+                                    calendar.fullCalendar('renderEvent', {
+                                        title: title,
+                                        start: date,
+                                        allDay: true
+                                    });
+                                } else {
+                                    alert('Invalid Date');
+                                }
+                            }
+                        }
+                    }
+                },
+                dayClick: function(date, jsEvent, view) {
+                    var title = prompt('Vision Says: Enter event title');
+                    if (title) {
+                        var date = moment(date);
+
+                        if (date.isValid()) {
+                            calendar.fullCalendar('renderEvent', {
+                                title: title,
+                                start: date,
+                                allDay: true
+                            });
+                        } else {
+                            alert('Invalid');
+                        }
+                    }
+                },
+                eventClick: function(calEvent, jsEvent, view) {
+                    var newTitle = prompt('Vision Says: Enter new title', calEvent.title);
+                    if (newTitle) {
+                        calEvent.title = newTitle;
+                        calendar.fullCalendar('updateEvent', calEvent);
+                    }
+                },
+            });
+        });
+    </script>
+ 
+ </html>
